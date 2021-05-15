@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Text("🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE YOU CAN TO")
+            Text("🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE YOU CAN TO").bold().kerning(2).multilineTextAlignment(.center).lineSpacing(4.0).font(.footnote)
             Text("89")
             HStack {
                 Text("1")
