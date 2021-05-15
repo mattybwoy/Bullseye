@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var alertIsVisible: Bool = false
+    
     var body: some View {
         VStack {
             Text("🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE YOU CAN TO").bold().kerning(2).multilineTextAlignment(.center).lineSpacing(4.0).font(.footnote)
@@ -17,10 +20,12 @@ struct ContentView: View {
                 Slider(value: .constant(50.00), in: 1.0...100.00)
                 Text("100").bold()
             }
-            Button(action: {}) {
+            Button(action: {self.alertIsVisible = true}) {
                 Text("Hit me")
             }
-        }
+            .alert(isPresented: $alertIsVisible, content: {
+                return Alert(title: Text("Hello"), message: Text("This is a pop up"), dismissButton: .default(Text("Awesome")))
+            })        }
     }
 }
 
