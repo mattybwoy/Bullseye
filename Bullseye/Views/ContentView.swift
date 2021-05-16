@@ -13,10 +13,12 @@ struct ContentView: View {
     
     @State private var sliderValue: Double = 50.0
     
+    @State private var game: Game = Game()
+    
     var body: some View {
         VStack {
             Text("🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE YOU CAN TO").bold().kerning(2).multilineTextAlignment(.center).lineSpacing(4.0).font(.footnote)
-            Text("89").kerning(-1).font(.largeTitle).fontWeight(.black)
+            Text(String(game.target)).kerning(-1).font(.largeTitle).fontWeight(.black)
             HStack {
                 Text("1").bold()
                 Slider(value: self.$sliderValue, in: 1.0...100.00)
@@ -26,7 +28,8 @@ struct ContentView: View {
                 Text("Hit me")
             }
             .alert(isPresented: $alertIsVisible, content: {
-                return Alert(title: Text("Hello"), message: Text("This is a pop up"), dismissButton: .default(Text("Awesome")))
+                var roundedValue: Int = Int(self.sliderValue.rounded())
+                return Alert(title: Text("Hello"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(self.game.points(sliderValue:roundedValue)) points this round."), dismissButton: .default(Text("Awesome")))
             })        }
     }
 }
