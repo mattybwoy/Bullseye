@@ -17,6 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            SwiftUI.Color.yellow.edgesIgnoringSafeArea(.all)
             Text("🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE YOU CAN TO").bold().kerning(2).multilineTextAlignment(.center).lineSpacing(4.0).font(.footnote)
             Text(String(game.target)).kerning(-1).font(.largeTitle).fontWeight(.black)
             HStack {
@@ -37,6 +38,7 @@ struct ContentView: View {
                 let roundedValue = Int(sliderValue.rounded())
                 return Alert(title: Text("Hello"), message: Text("The slider's value is \(roundedValue).\n" + "You scored \(game.points(sliderValue:roundedValue)) points this round."), dismissButton: .default(Text("Awesome")))
             })        }
+            .background(SwiftUI.Color.yellow.edgesIgnoringSafeArea(.all))
     }
 }
 
@@ -44,6 +46,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         ContentView().previewLayout(.fixed(width: 568, height: 320))
+            
     }
 }
 

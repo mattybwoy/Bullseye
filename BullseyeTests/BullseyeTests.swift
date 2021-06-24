@@ -33,4 +33,10 @@ class BullseyeTests: XCTestCase {
         let score = game.points(sliderValue: guess)
         XCTAssertEqual(score, 95)
     }
+    
+    func testBullseye() {
+        let guess = game.target
+        let score = game.points(sliderValue: guess)
+        XCTAssertEqual(score, 100)
+    }
 }
